@@ -85,7 +85,7 @@ GetPlayerSprite:
 
 .finish
 	ld [wUsedSprites + 0], a
-	ld [wLoadedObjectEventPlayerSprite], a
+	ld [wLoadedPlayerObjectEventSprite], a
 	ld [wPlayerObjectSprite], a
 	ret
 

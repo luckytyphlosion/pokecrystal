@@ -221,14 +221,14 @@ CheckFacingObject::
 	call CheckCounterTile
 	jr nz, .asm_6ff1
 
-	ld a, [wLoadedObjectEventPlayerStandingMapX]
+	ld a, [wLoadedPlayerObjectEventStandingMapX]
 	sub d
 	cpl
 	inc a
 	add d
 	ld d, a
 
-	ld a, [wLoadedObjectEventPlayerStandingMapY]
+	ld a, [wLoadedPlayerObjectEventStandingMapY]
 	sub e
 	cpl
 	inc a
@@ -462,9 +462,9 @@ IsObjectMovingOffEdgeOfScreen:
 	ret
 
 Unreferenced_Function7113:
-	ld a, [wLoadedObjectEventPlayerStandingMapX]
+	ld a, [wLoadedPlayerObjectEventStandingMapX]
 	ld d, a
-	ld a, [wLoadedObjectEventPlayerStandingMapY]
+	ld a, [wLoadedPlayerObjectEventStandingMapY]
 	ld e, a
 	ld bc, wLoadedObjectEvents
 	xor a

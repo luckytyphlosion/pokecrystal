@@ -2436,7 +2436,7 @@ RefreshPlayerSprite:
 	ld [wPlayerMovement], a
 	xor a
 	ld [wPlayerTurningDirection], a
-	ld [wLoadedObjectEventPlayerObjectStepFrame], a
+	ld [wLoadedPlayerObjectEventObjectStepFrame], a
 	call .TryResetPlayerAction
 	farcall CheckWarpFacingDown
 	call c, SpawnInFacingDown
@@ -2451,7 +2451,7 @@ RefreshPlayerSprite:
 
 .ok
 	ld a, OBJECT_ACTION_00
-	ld [wLoadedObjectEventPlayerAction], a
+	ld [wLoadedPlayerObjectEventAction], a
 	ret
 
 .SpawnInCustomFacing:
@@ -2467,7 +2467,7 @@ RefreshPlayerSprite:
 SpawnInFacingDown:
 	ld a, 0
 ContinueSpawnFacing:
-	ld bc, wLoadedObjectEventPlayer
+	ld bc, wLoadedPlayerObjectEvent
 	call SetSpriteDirection
 	ret
 
@@ -2485,7 +2485,7 @@ _SetPlayerPalette:
 	swap a
 	and PALETTE_MASK
 	ld d, a
-	ld bc, wLoadedObjectEventPlayer
+	ld bc, wLoadedPlayerObjectEvent
 	ld hl, OBJECT_PALETTE
 	add hl, bc
 	ld a, [hl]
@@ -2988,7 +2988,7 @@ InitSprites:
 	ret
 
 .Addresses:
-	dw wLoadedObjectEventPlayer
+	dw wLoadedPlayerObjectEvent
 	dw wLoadedObjectEvent1
 	dw wLoadedObjectEvent2
 	dw wLoadedObjectEvent3

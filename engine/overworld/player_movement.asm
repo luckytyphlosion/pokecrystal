@@ -116,7 +116,7 @@ DoPlayerMovement::
 ; Tiles such as waterfalls and warps move the player
 ; in a given direction, overriding input.
 
-	ld a, [wLoadedObjectEventPlayerStandingTile]
+	ld a, [wLoadedPlayerObjectEventStandingTile]
 	ld c, a
 	call CheckWhirlpoolTile
 	jr c, .not_whirlpool
@@ -238,7 +238,7 @@ DoPlayerMovement::
 	jr z, .not_turning
 
 	ld e, a
-	ld a, [wLoadedObjectEventPlayerDirection]
+	ld a, [wLoadedPlayerObjectEventDirection]
 	rrca
 	rrca
 	maskbits NUM_DIRECTIONS
@@ -272,7 +272,7 @@ DoPlayerMovement::
 	cp 2
 	jr z, .bump
 
-	ld a, [wLoadedObjectEventPlayerStandingTile]
+	ld a, [wLoadedPlayerObjectEventStandingTile]
 	call CheckIceTile
 	jr nc, .ice
 
@@ -354,7 +354,7 @@ DoPlayerMovement::
 	ret
 
 .TryJump:
-	ld a, [wLoadedObjectEventPlayerStandingTile]
+	ld a, [wLoadedPlayerObjectEventStandingTile]
 	ld e, a
 	and $f0
 	cp HI_NYBBLE_LEDGES
@@ -405,7 +405,7 @@ DoPlayerMovement::
 	ld d, 0
 	ld hl, .EdgeWarps
 	add hl, de
-	ld a, [wLoadedObjectEventPlayerStandingTile]
+	ld a, [wLoadedPlayerObjectEventStandingTile]
 	cp [hl]
 	jr nz, .not_warp
 
@@ -417,7 +417,7 @@ DoPlayerMovement::
 	jr z, .not_warp
 
 	ld e, a
-	ld a, [wLoadedObjectEventPlayerDirection]
+	ld a, [wLoadedPlayerObjectEventDirection]
 	rrca
 	rrca
 	maskbits NUM_DIRECTIONS
@@ -605,7 +605,7 @@ ENDM
 
 .action_table:
 .action_table_1
-	player_action STANDING, FACE_CURRENT, 0,  0, wLoadedObjectEventPlayerStandingTile
+	player_action STANDING, FACE_CURRENT, 0,  0, wLoadedPlayerObjectEventStandingTile
 .action_table_1_end
 	player_action RIGHT,    FACE_RIGHT,   1,  0, wTileRight
 	player_action LEFT,     FACE_LEFT,   -1,  0, wTileLeft
@@ -619,13 +619,13 @@ ENDM
 	ld a, 0
 	ldh [hMapObjectIndexBuffer], a
 ; Load the next X coordinate into d
-	ld a, [wLoadedObjectEventPlayerStandingMapX]
+	ld a, [wLoadedPlayerObjectEventStandingMapX]
 	ld d, a
 	ld a, [wWalkingX]
 	add d
 	ld d, a
 ; Load the next Y coordinate into e
-	ld a, [wLoadedObjectEventPlayerStandingMapY]
+	ld a, [wLoadedPlayerObjectEventStandingMapY]
 	ld e, a
 	ld a, [wWalkingY]
 	add e
@@ -790,7 +790,7 @@ CheckStandingOnIce::
 	jr z, .not_ice
 	cp $f0
 	jr z, .not_ice
-	ld a, [wLoadedObjectEventPlayerStandingTile]
+	ld a, [wLoadedPlayerObjectEventStandingTile]
 	call CheckIceTile
 	jr nc, .yep
 	ld a, [wPlayerState]

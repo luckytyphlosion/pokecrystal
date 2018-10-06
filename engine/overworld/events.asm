@@ -347,7 +347,7 @@ CheckTileEvent:
 	ret
 
 .warp_tile
-	ld a, [wLoadedObjectEventPlayerStandingTile]
+	ld a, [wLoadedPlayerObjectEventStandingTile]
 	call CheckPitTile
 	jr nz, .not_pit
 	ld a, PLAYEREVENT_FALL
@@ -666,7 +666,7 @@ TryBGEvent:
 	jr .checkdir
 
 .checkdir
-	ld a, [wLoadedObjectEventPlayerDirection]
+	ld a, [wLoadedPlayerObjectEventDirection]
 	and %1100
 	cp b
 	jp nz, .dontread
@@ -1179,7 +1179,7 @@ CanUseSweetScent::
 	jr nc, .no
 
 .ice_check
-	ld a, [wLoadedObjectEventPlayerStandingTile]
+	ld a, [wLoadedPlayerObjectEventStandingTile]
 	call CheckIceTile
 	jr z, .no
 	scf
@@ -1250,7 +1250,7 @@ ChooseWildEncounter_BugContest::
 	ret
 
 TryWildEncounter_BugContest:
-	ld a, [wLoadedObjectEventPlayerStandingTile]
+	ld a, [wLoadedPlayerObjectEventStandingTile]
 	call CheckSuperTallGrassTile
 	ld b, 40 percent
 	jr z, .ok
@@ -1585,14 +1585,14 @@ CmdQueue_Type3:
 
 .IsPlayerFacingDown:
 	push bc
-	ld bc, wLoadedObjectEventPlayer
+	ld bc, wLoadedPlayerObjectEvent
 	call GetSpriteDirection
 	and a
 	pop bc
 	ret
 
 CmdQueue_StoneTable:
-	ld de, wLoadedObjectEventPlayer
+	ld de, wLoadedPlayerObjectEvent
 	ld a, NUM_OBJECT_STRUCTS
 .loop
 	push af

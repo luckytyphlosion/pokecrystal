@@ -103,23 +103,23 @@ RefreshPlayerCoords:
 	ld a, [wXCoord]
 	add 4
 	ld d, a
-	ld hl, wLoadedObjectEventPlayerStandingMapX
+	ld hl, wLoadedPlayerObjectEventStandingMapX
 	sub [hl]
 	ld [hl], d
 	ld hl, wMapObjects + MAPOBJECT_X_COORD
 	ld [hl], d
-	ld hl, wLoadedObjectEventPlayerLastMapX
+	ld hl, wLoadedPlayerObjectEventLastMapX
 	ld [hl], d
 	ld d, a
 	ld a, [wYCoord]
 	add 4
 	ld e, a
-	ld hl, wLoadedObjectEventPlayerStandingMapY
+	ld hl, wLoadedPlayerObjectEventStandingMapY
 	sub [hl]
 	ld [hl], e
 	ld hl, wMapObjects + MAPOBJECT_Y_COORD
 	ld [hl], e
-	ld hl, wLoadedObjectEventPlayerLastMapY
+	ld hl, wLoadedPlayerObjectEventLastMapY
 	ld [hl], e
 	ld e, a
 	ld a, [wObjectFollow_Leader]
@@ -586,7 +586,7 @@ SurfStartStep:
 	ret
 
 .GetMovementData:
-	ld a, [wLoadedObjectEventPlayerDirection]
+	ld a, [wLoadedPlayerObjectEventDirection]
 	srl a
 	srl a
 	maskbits NUM_DIRECTIONS

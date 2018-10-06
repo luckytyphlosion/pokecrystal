@@ -72,13 +72,13 @@ DoesSpriteHaveFacings::
 	ret
 
 GetPlayerStandingTile::
-	ld a, [wLoadedObjectEventPlayerStandingTile]
+	ld a, [wLoadedPlayerObjectEventStandingTile]
 	call GetTileCollision
 	ld b, a
 	ret
 
 CheckOnWater::
-	ld a, [wLoadedObjectEventPlayerStandingTile]
+	ld a, [wLoadedPlayerObjectEventStandingTile]
 	call GetTileCollision
 	sub WATERTILE
 	ret z
@@ -189,7 +189,7 @@ CheckWaterfallTile::
 	ret
 
 CheckStandingOnEntrance::
-	ld a, [wLoadedObjectEventPlayerStandingTile]
+	ld a, [wLoadedPlayerObjectEventStandingTile]
 	cp COLL_DOOR
 	ret z
 	cp COLL_DOOR_79

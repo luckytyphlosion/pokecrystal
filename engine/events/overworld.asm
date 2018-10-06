@@ -462,7 +462,7 @@ CheckDirection:
 ; from moving in the direction you're facing.
 
 ; Get player direction
-	ld a, [wLoadedObjectEventPlayerDirection]
+	ld a, [wLoadedPlayerObjectEventDirection]
 	and %00001100 ; bits 2 and 3 contain direction
 	rrca
 	rrca
@@ -662,7 +662,7 @@ WaterfallFunction:
 	ret
 
 CheckMapCanWaterfall:
-	ld a, [wLoadedObjectEventPlayerDirection]
+	ld a, [wLoadedPlayerObjectEventDirection]
 	and $c
 	cp FACE_UP
 	jr nz, .failed
@@ -695,7 +695,7 @@ Script_UsedWaterfall:
 .CheckContinueWaterfall:
 	xor a
 	ld [wScriptVar], a
-	ld a, [wLoadedObjectEventPlayerStandingTile]
+	ld a, [wLoadedPlayerObjectEventStandingTile]
 	call CheckWaterfallTile
 	ret z
 	farcall StubbedTrainerRankings_Waterfall
@@ -1595,7 +1595,7 @@ Script_GotABite:
 	step_end
 
 Fishing_CheckFacingUp:
-	ld a, [wLoadedObjectEventPlayerDirection]
+	ld a, [wLoadedPlayerObjectEventDirection]
 	and $c
 	cp OW_UP
 	ld a, $1
@@ -1625,7 +1625,7 @@ PutTheRodAway:
 	xor a
 	ldh [hBGMapMode], a
 	ld a, $1
-	ld [wLoadedObjectEventPlayerAction], a
+	ld [wLoadedPlayerObjectEventAction], a
 	call UpdateSprites
 	call ReplaceKrisSprite
 	ret

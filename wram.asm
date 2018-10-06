@@ -2319,7 +2319,7 @@ wXYComparePointer:: dw ; d453
 
 wBattleScriptFlags:: dw ; d459
 wPlayerSpriteSetupFlags:: ; d45b
-; bit 7: if set, cancel wLoadedObjectEventPlayerAction
+; bit 7: if set, cancel wLoadedPlayerObjectEventAction
 ; bit 6: RefreshMapSprites doesn't reload player sprite
 ; bit 5: if set, set facing according to bits 0-1
 ; bit 2: female player has been transformed into male
@@ -2401,7 +2401,7 @@ wFollowerMovementQueueLength:: db
 wFollowMovementQueue:: ds 5
 
 wLoadedObjectEvents:: ; d4d6
-wLoadedObjectEventPlayer::  loaded_object_event wLoadedObjectEventPlayer
+wLoadedPlayerObjectEvent::  loaded_object_event wLoadedPlayerObjectEvent
 wLoadedObjectEvent1::       loaded_object_event wLoadedObjectEvent1
 wLoadedObjectEvent2::       loaded_object_event wLoadedObjectEvent2
 wLoadedObjectEvent3::       loaded_object_event wLoadedObjectEvent3
