@@ -42,7 +42,7 @@ SpawnPlayer:
 	ld [hl], e
 	ld a, PLAYER_OBJECT
 	ldh [hMapObjectIndexBuffer], a
-	ld bc, wMapObjects
+	ld bc, wObjectEvents
 	ld a, PLAYER_OBJECT
 	ldh [hObjectStructIndexBuffer], a
 	ld de, wLoadedObjectEvents
@@ -106,7 +106,7 @@ RefreshPlayerCoords:
 	ld hl, wLoadedPlayerObjectEventStandingMapX
 	sub [hl]
 	ld [hl], d
-	ld hl, wMapObjects + MAPOBJECT_X_COORD
+	ld hl, wObjectEvents + MAPOBJECT_X_COORD
 	ld [hl], d
 	ld hl, wLoadedPlayerObjectEventLastMapX
 	ld [hl], d
@@ -117,7 +117,7 @@ RefreshPlayerCoords:
 	ld hl, wLoadedPlayerObjectEventStandingMapY
 	sub [hl]
 	ld [hl], e
-	ld hl, wMapObjects + MAPOBJECT_Y_COORD
+	ld hl, wObjectEvents + MAPOBJECT_Y_COORD
 	ld [hl], e
 	ld hl, wLoadedPlayerObjectEventLastMapY
 	ld [hl], e
@@ -224,7 +224,7 @@ CopyMapObjectToObjectStruct:
 	ret
 
 InitializeVisibleSprites:
-	ld bc, wMapObjects + OBJECT_LENGTH
+	ld bc, wObjectEvents + OBJECT_LENGTH
 	ld a, 1
 .loop
 	ldh [hMapObjectIndexBuffer], a
@@ -311,7 +311,7 @@ CheckObjectEnteringVisibleRange::
 	ld d, a
 	ld a, [wXCoord]
 	ld e, a
-	ld bc, wMapObjects + OBJECT_LENGTH
+	ld bc, wObjectEvents + OBJECT_LENGTH
 	ld a, 1
 .loop_v
 	ldh [hMapObjectIndexBuffer], a
@@ -367,7 +367,7 @@ CheckObjectEnteringVisibleRange::
 	ld e, a
 	ld a, [wYCoord]
 	ld d, a
-	ld bc, wMapObjects + OBJECT_LENGTH
+	ld bc, wObjectEvents + OBJECT_LENGTH
 	ld a, 1
 .loop_h
 	ldh [hMapObjectIndexBuffer], a

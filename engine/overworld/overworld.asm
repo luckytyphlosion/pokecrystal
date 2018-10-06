@@ -86,7 +86,7 @@ GetPlayerSprite:
 .finish
 	ld [wUsedSprites + 0], a
 	ld [wLoadedPlayerObjectEventSprite], a
-	ld [wPlayerObjectSprite], a
+	ld [wPlayerObjectEventSprite], a
 	ret
 
 INCLUDE "data/sprites/player_sprites.asm"
@@ -103,7 +103,7 @@ AddMapSprites:
 	ret
 
 AddIndoorSprites:
-	ld hl, wMap1ObjectSprite
+	ld hl, wObjectEvent1Sprite
 	ld a, 1
 .loop
 	push af

@@ -1,4 +1,4 @@
-; loaded_object_event members (see macros/wram.asm)
+; loaded_object_event_struct members (see macros/wram.asm)
 	const_def
 	const OBJECT_SPRITE              ; 00
 	const OBJECT_MAP_OBJECT_INDEX    ; 01
@@ -37,13 +37,13 @@
 OBJECT_STRUCT_LENGTH EQU 40
 NUM_OBJECT_STRUCTS EQU 13 ; see wLoadedObjectEvents
 
-; loaded_object_event OBJECT_FACING values
+; loaded_object_event_struct OBJECT_FACING values
 OW_DOWN  EQU DOWN  << 2
 OW_UP    EQU UP    << 2
 OW_LEFT  EQU LEFT  << 2
 OW_RIGHT EQU RIGHT << 2
 
-; loaded_object_event OBJECT_FLAGS1 bit flags
+; loaded_object_event_struct OBJECT_FLAGS1 bit flags
 	const_def
 	const INVISIBLE_F     ; 0
 	const WONT_DELETE_F   ; 1
@@ -63,7 +63,7 @@ MOVE_ANYWHERE EQU 1 << MOVE_ANYWHERE_F
 NOCLIP_OBJS   EQU 1 << NOCLIP_OBJS_F
 EMOTE_OBJECT  EQU 1 << EMOTE_OBJECT_F
 
-; loaded_object_event OBJECT_FLAGS2 bit flags
+; loaded_object_event_struct OBJECT_FLAGS2 bit flags
 	const_def
 	const LOW_PRIORITY_F  ; 0
 	const HIGH_PRIORITY_F ; 1
@@ -76,7 +76,7 @@ HIGH_PRIORITY EQU 1 << HIGH_PRIORITY_F
 OVERHEAD      EQU 1 << OVERHEAD_F
 USE_OBP1      EQU 1 << USE_OBP1_F
 
-; loaded_object_event OBJECT_PALETTE bit flags
+; loaded_object_event_struct OBJECT_PALETTE bit flags
 	const_def 5
 	const SWIMMING_F         ; 5
 	const STRENGTH_BOULDER_F ; 6
@@ -93,7 +93,7 @@ ABSOLUTE_TILE_ID_F    EQU 2
 RELATIVE_ATTRIBUTES EQU 1 << RELATIVE_ATTRIBUTES_F
 ABSOLUTE_TILE_ID    EQU 1 << ABSOLUTE_TILE_ID_F
 
-; map_object struct members (see macros/wram.asm)
+; object_event_struct struct members (see macros/wram.asm)
 	const_def
 	const MAPOBJECT_OBJECT_STRUCT_ID ; 0
 	const MAPOBJECT_SPRITE ; 1

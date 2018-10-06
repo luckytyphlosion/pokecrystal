@@ -149,7 +149,7 @@ SPAWN_RED   EQU 2
 	const FRIDAY    ; 5
 	const SATURDAY  ; 6
 
-; wMapObjects:: ; d71e
+; wObjectEvents:: ; d71e
 PLAYER_OBJECT EQU 0
 NUM_OBJECTS   EQU $10
 

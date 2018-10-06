@@ -2401,43 +2401,43 @@ wFollowerMovementQueueLength:: db
 wFollowMovementQueue:: ds 5
 
 wLoadedObjectEvents:: ; d4d6
-wLoadedPlayerObjectEvent::  loaded_object_event wLoadedPlayerObjectEvent
-wLoadedObjectEvent1::       loaded_object_event wLoadedObjectEvent1
-wLoadedObjectEvent2::       loaded_object_event wLoadedObjectEvent2
-wLoadedObjectEvent3::       loaded_object_event wLoadedObjectEvent3
-wLoadedObjectEvent4::       loaded_object_event wLoadedObjectEvent4
-wLoadedObjectEvent5::       loaded_object_event wLoadedObjectEvent5
-wLoadedObjectEvent6::       loaded_object_event wLoadedObjectEvent6
-wLoadedObjectEvent7::       loaded_object_event wLoadedObjectEvent7
-wLoadedObjectEvent8::       loaded_object_event wLoadedObjectEvent8
-wLoadedObjectEvent9::       loaded_object_event wLoadedObjectEvent9
-wLoadedObjectEvent10::      loaded_object_event wLoadedObjectEvent10
-wLoadedObjectEvent11::      loaded_object_event wLoadedObjectEvent11
-wLoadedObjectEvent12::      loaded_object_event wLoadedObjectEvent12
+wLoadedPlayerObjectEvent::  loaded_object_event_struct wLoadedPlayerObjectEvent
+wLoadedObjectEvent1::       loaded_object_event_struct wLoadedObjectEvent1
+wLoadedObjectEvent2::       loaded_object_event_struct wLoadedObjectEvent2
+wLoadedObjectEvent3::       loaded_object_event_struct wLoadedObjectEvent3
+wLoadedObjectEvent4::       loaded_object_event_struct wLoadedObjectEvent4
+wLoadedObjectEvent5::       loaded_object_event_struct wLoadedObjectEvent5
+wLoadedObjectEvent6::       loaded_object_event_struct wLoadedObjectEvent6
+wLoadedObjectEvent7::       loaded_object_event_struct wLoadedObjectEvent7
+wLoadedObjectEvent8::       loaded_object_event_struct wLoadedObjectEvent8
+wLoadedObjectEvent9::       loaded_object_event_struct wLoadedObjectEvent9
+wLoadedObjectEvent10::      loaded_object_event_struct wLoadedObjectEvent10
+wLoadedObjectEvent11::      loaded_object_event_struct wLoadedObjectEvent11
+wLoadedObjectEvent12::      loaded_object_event_struct wLoadedObjectEvent12
 wLoadedObjectEventsEnd:: ; d6de
 
 wCmdQueue:: ds CMDQUEUE_CAPACITY * CMDQUEUE_ENTRY_SIZE
 
 	ds 40
 
-wMapObjects:: ; d71e
-wPlayerObject:: map_object wPlayer
-wMap1Object::   map_object wMap1
-wMap2Object::   map_object wMap2
-wMap3Object::   map_object wMap3
-wMap4Object::   map_object wMap4
-wMap5Object::   map_object wMap5
-wMap6Object::   map_object wMap6
-wMap7Object::   map_object wMap7
-wMap8Object::   map_object wMap8
-wMap9Object::   map_object wMap9
-wMap10Object::  map_object wMap10
-wMap11Object::  map_object wMap11
-wMap12Object::  map_object wMap12
-wMap13Object::  map_object wMap13
-wMap14Object::  map_object wMap14
-wMap15Object::  map_object wMap15
-wMapObjectsEnd::
+wObjectEvents:: ; d71e
+wPlayerObjectEvent::  object_event_struct wPlayerObjectEvent
+wObjectEvent1::       object_event_struct wObjectEvent1
+wObjectEvent2::       object_event_struct wObjectEvent2
+wObjectEvent3::       object_event_struct wObjectEvent3
+wObjectEvent4::       object_event_struct wObjectEvent4
+wObjectEvent5::       object_event_struct wObjectEvent5
+wObjectEvent6::       object_event_struct wObjectEvent6
+wObjectEvent7::       object_event_struct wObjectEvent7
+wObjectEvent8::       object_event_struct wObjectEvent8
+wObjectEvent9::       object_event_struct wObjectEvent9
+wObjectEvent10::      object_event_struct wObjectEvent10
+wObjectEvent11::      object_event_struct wObjectEvent11
+wObjectEvent12::      object_event_struct wObjectEvent12
+wObjectEvent13::      object_event_struct wObjectEvent13
+wObjectEvent14::      object_event_struct wObjectEvent14
+wObjectEvent15::      object_event_struct wObjectEvent15
+wObjectEventsEnd::
 
 wObjectMasks:: ds NUM_OBJECTS ; d81e
 

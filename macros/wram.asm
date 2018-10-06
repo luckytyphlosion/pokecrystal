@@ -279,7 +279,7 @@ slot_reel: MACRO
 \1StopDelay::    db
 ENDM
 
-loaded_object_event: MACRO
+loaded_object_event_struct: MACRO
 \1Sprite::            db
 \1MapObjectIndex::    db
 \1SpriteTile::        db
@@ -316,19 +316,19 @@ loaded_object_event: MACRO
 \1StructEnd::
 ENDM
 
-map_object: MACRO
-\1ObjectStructID::  db
-\1ObjectSprite::    db
-\1ObjectYCoord::    db
-\1ObjectXCoord::    db
-\1ObjectMovement::  db
-\1ObjectRadius::    db
-\1ObjectHour::      db
-\1ObjectTimeOfDay:: db
-\1ObjectColor::     db
-\1ObjectRange::     db
-\1ObjectScript::    dw
-\1ObjectEventFlag:: dw
+object_event_struct: MACRO
+\1StructID::  db
+\1Sprite::    db
+\1YCoord::    db
+\1XCoord::    db
+\1Movement::  db
+\1Radius::    db
+\1Hour::      db
+\1TimeOfDay:: db
+\1Color::     db
+\1Range::     db
+\1Script::    dw
+\1EventFlag:: dw
 	ds 2
 ENDM
 

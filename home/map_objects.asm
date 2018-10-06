@@ -201,7 +201,7 @@ CheckStandingOnEntrance::
 
 GetMapObject::
 ; Return the location of map object a in bc.
-	ld hl, wMapObjects
+	ld hl, wObjectEvents
 	ld bc, OBJECT_LENGTH
 	call AddNTimes
 	ld b, h

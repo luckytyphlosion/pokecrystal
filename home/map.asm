@@ -571,7 +571,7 @@ ReadObjectEvents::
 	push hl
 	call ClearObjectStructs
 	pop de
-	ld hl, wMap1Object
+	ld hl, wObjectEvent1
 	ld a, [de]
 	inc de
 	ld [wCurMapObjectEventCount], a
