@@ -72,13 +72,13 @@ DoesSpriteHaveFacings::
 	ret
 
 GetPlayerStandingTile::
-	ld a, [wPlayerStandingTile]
+	ld a, [wLoadedObjectEventPlayerStandingTile]
 	call GetTileCollision
 	ld b, a
 	ret
 
 CheckOnWater::
-	ld a, [wPlayerStandingTile]
+	ld a, [wLoadedObjectEventPlayerStandingTile]
 	call GetTileCollision
 	sub WATERTILE
 	ret z
@@ -189,7 +189,7 @@ CheckWaterfallTile::
 	ret
 
 CheckStandingOnEntrance::
-	ld a, [wPlayerStandingTile]
+	ld a, [wLoadedObjectEventPlayerStandingTile]
 	cp COLL_DOOR
 	ret z
 	cp COLL_DOOR_79
@@ -423,7 +423,7 @@ FindFirstEmptyObjectStruct::
 ; Preserves BC and DE.
 	push bc
 	push de
-	ld hl, wObjectStructs
+	ld hl, wLoadedObjectEvents
 	ld de, OBJECT_STRUCT_LENGTH
 	ld c, NUM_OBJECT_STRUCTS
 .loop
@@ -595,7 +595,7 @@ UpdateSprites::
 
 GetObjectStruct::
 	ld bc, OBJECT_STRUCT_LENGTH
-	ld hl, wObjectStructs
+	ld hl, wLoadedObjectEvents
 	call AddNTimes
 	ld b, h
 	ld c, l

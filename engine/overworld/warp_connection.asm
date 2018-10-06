@@ -346,7 +346,7 @@ CheckMovingOffEdgeOfMap::
 	ret
 
 .down
-	ld a, [wPlayerStandingMapY]
+	ld a, [wLoadedObjectEventPlayerStandingMapY]
 	sub 4
 	ld b, a
 	ld a, [wMapHeight]
@@ -357,7 +357,7 @@ CheckMovingOffEdgeOfMap::
 	ret
 
 .up
-	ld a, [wPlayerStandingMapY]
+	ld a, [wLoadedObjectEventPlayerStandingMapY]
 	sub 4
 	cp -1
 	jr z, .ok
@@ -365,7 +365,7 @@ CheckMovingOffEdgeOfMap::
 	ret
 
 .left
-	ld a, [wPlayerStandingMapX]
+	ld a, [wLoadedObjectEventPlayerStandingMapX]
 	sub 4
 	cp -1
 	jr z, .ok
@@ -373,7 +373,7 @@ CheckMovingOffEdgeOfMap::
 	ret
 
 .right
-	ld a, [wPlayerStandingMapX]
+	ld a, [wLoadedObjectEventPlayerStandingMapX]
 	sub 4
 	ld b, a
 	ld a, [wMapWidth]

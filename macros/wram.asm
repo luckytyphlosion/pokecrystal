@@ -279,7 +279,7 @@ slot_reel: MACRO
 \1StopDelay::    db
 ENDM
 
-object_struct: MACRO
+loaded_object_event: MACRO
 \1Sprite::            db
 \1MapObjectIndex::    db
 \1SpriteTile::        db

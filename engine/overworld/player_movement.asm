@@ -116,7 +116,7 @@ DoPlayerMovement::
 ; Tiles such as waterfalls and warps move the player
 ; in a given direction, overriding input.
 
-	ld a, [wPlayerStandingTile]
+	ld a, [wLoadedObjectEventPlayerStandingTile]
 	ld c, a
 	call CheckWhirlpoolTile
 	jr c, .not_whirlpool
@@ -238,7 +238,7 @@ DoPlayerMovement::
 	jr z, .not_turning
 
 	ld e, a
-	ld a, [wPlayerDirection]
+	ld a, [wLoadedObjectEventPlayerDirection]
 	rrca
 	rrca
 	maskbits NUM_DIRECTIONS
@@ -272,7 +272,7 @@ DoPlayerMovement::
 	cp 2
 	jr z, .bump
 
-	ld a, [wPlayerStandingTile]
+	ld a, [wLoadedObjectEventPlayerStandingTile]
 	call CheckIceTile
 	jr nc, .ice
 
@@ -354,7 +354,7 @@ DoPlayerMovement::
 	ret
 
 .TryJump:
-	ld a, [wPlayerStandingTile]
+	ld a, [wLoadedObjectEventPlayerStandingTile]
 	ld e, a
 	and $f0
 	cp HI_NYBBLE_LEDGES
@@ -405,7 +405,7 @@ DoPlayerMovement::
 	ld d, 0
 	ld hl, .EdgeWarps
 	add hl, de
-	ld a, [wPlayerStandingTile]
+	ld a, [wLoadedObjectEventPlayerStandingTile]
 	cp [hl]
 	jr nz, .not_warp
 
@@ -417,7 +417,7 @@ DoPlayerMovement::
 	jr z, .not_warp
 
 	ld e, a
-	ld a, [wPlayerDirection]
+	ld a, [wLoadedObjectEventPlayerDirection]
 	rrca
 	rrca
 	maskbits NUM_DIRECTIONS
@@ -605,7 +605,7 @@ ENDM
 
 .action_table:
 .action_table_1
-	player_action STANDING, FACE_CURRENT, 0,  0, wPlayerStandingTile
+	player_action STANDING, FACE_CURRENT, 0,  0, wLoadedObjectEventPlayerStandingTile
 .action_table_1_end
 	player_action RIGHT,    FACE_RIGHT,   1,  0, wTileRight
 	player_action LEFT,     FACE_LEFT,   -1,  0, wTileLeft
@@ -619,19 +619,19 @@ ENDM
 	ld a, 0
 	ldh [hMapObjectIndexBuffer], a
 ; Load the next X coordinate into d
-	ld a, [wPlayerStandingMapX]
+	ld a, [wLoadedObjectEventPlayerStandingMapX]
 	ld d, a
 	ld a, [wWalkingX]
 	add d
 	ld d, a
 ; Load the next Y coordinate into e
-	ld a, [wPlayerStandingMapY]
+	ld a, [wLoadedObjectEventPlayerStandingMapY]
 	ld e, a
 	ld a, [wWalkingY]
 	add e
 	ld e, a
 ; Find an object struct with coordinates equal to d,e
-	ld bc, wObjectStructs ; redundant
+	ld bc, wLoadedObjectEvents ; redundant
 	farcall IsNPCAtCoord
 	jr nc, .is_npc
 	call .CheckStrengthBoulder
@@ -790,7 +790,7 @@ CheckStandingOnIce::
 	jr z, .not_ice
 	cp $f0
 	jr z, .not_ice
-	ld a, [wPlayerStandingTile]
+	ld a, [wLoadedObjectEventPlayerStandingTile]
 	call CheckIceTile
 	jr nc, .yep
 	ld a, [wPlayerState]

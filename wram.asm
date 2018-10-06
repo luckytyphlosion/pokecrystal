@@ -2319,7 +2319,7 @@ wXYComparePointer:: dw ; d453
 
 wBattleScriptFlags:: dw ; d459
 wPlayerSpriteSetupFlags:: ; d45b
-; bit 7: if set, cancel wPlayerAction
+; bit 7: if set, cancel wLoadedObjectEventPlayerAction
 ; bit 6: RefreshMapSprites doesn't reload player sprite
 ; bit 5: if set, set facing according to bits 0-1
 ; bit 2: female player has been transformed into male
@@ -2400,21 +2400,21 @@ wCenteredObject:: db
 wFollowerMovementQueueLength:: db
 wFollowMovementQueue:: ds 5
 
-wObjectStructs:: ; d4d6
-wPlayerStruct::   object_struct wPlayer
-wObject1Struct::  object_struct wObject1
-wObject2Struct::  object_struct wObject2
-wObject3Struct::  object_struct wObject3
-wObject4Struct::  object_struct wObject4
-wObject5Struct::  object_struct wObject5
-wObject6Struct::  object_struct wObject6
-wObject7Struct::  object_struct wObject7
-wObject8Struct::  object_struct wObject8
-wObject9Struct::  object_struct wObject9
-wObject10Struct:: object_struct wObject10
-wObject11Struct:: object_struct wObject11
-wObject12Struct:: object_struct wObject12
-wObjectStructsEnd:: ; d6de
+wLoadedObjectEvents:: ; d4d6
+wLoadedObjectEventPlayer::  loaded_object_event wLoadedObjectEventPlayer
+wLoadedObjectEvent1::       loaded_object_event wLoadedObjectEvent1
+wLoadedObjectEvent2::       loaded_object_event wLoadedObjectEvent2
+wLoadedObjectEvent3::       loaded_object_event wLoadedObjectEvent3
+wLoadedObjectEvent4::       loaded_object_event wLoadedObjectEvent4
+wLoadedObjectEvent5::       loaded_object_event wLoadedObjectEvent5
+wLoadedObjectEvent6::       loaded_object_event wLoadedObjectEvent6
+wLoadedObjectEvent7::       loaded_object_event wLoadedObjectEvent7
+wLoadedObjectEvent8::       loaded_object_event wLoadedObjectEvent8
+wLoadedObjectEvent9::       loaded_object_event wLoadedObjectEvent9
+wLoadedObjectEvent10::      loaded_object_event wLoadedObjectEvent10
+wLoadedObjectEvent11::      loaded_object_event wLoadedObjectEvent11
+wLoadedObjectEvent12::      loaded_object_event wLoadedObjectEvent12
+wLoadedObjectEventsEnd:: ; d6de
 
 wCmdQueue:: ds CMDQUEUE_CAPACITY * CMDQUEUE_ENTRY_SIZE
 

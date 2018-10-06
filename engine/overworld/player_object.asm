@@ -45,7 +45,7 @@ SpawnPlayer:
 	ld bc, wMapObjects
 	ld a, PLAYER_OBJECT
 	ldh [hObjectStructIndexBuffer], a
-	ld de, wObjectStructs
+	ld de, wLoadedObjectEvents
 	call CopyMapObjectToObjectStruct
 	ld a, PLAYER
 	ld [wCenteredObject], a
@@ -103,23 +103,23 @@ RefreshPlayerCoords:
 	ld a, [wXCoord]
 	add 4
 	ld d, a
-	ld hl, wPlayerStandingMapX
+	ld hl, wLoadedObjectEventPlayerStandingMapX
 	sub [hl]
 	ld [hl], d
 	ld hl, wMapObjects + MAPOBJECT_X_COORD
 	ld [hl], d
-	ld hl, wPlayerLastMapX
+	ld hl, wLoadedObjectEventPlayerLastMapX
 	ld [hl], d
 	ld d, a
 	ld a, [wYCoord]
 	add 4
 	ld e, a
-	ld hl, wPlayerStandingMapY
+	ld hl, wLoadedObjectEventPlayerStandingMapY
 	sub [hl]
 	ld [hl], e
 	ld hl, wMapObjects + MAPOBJECT_Y_COORD
 	ld [hl], e
-	ld hl, wPlayerLastMapY
+	ld hl, wLoadedObjectEventPlayerLastMapY
 	ld [hl], e
 	ld e, a
 	ld a, [wObjectFollow_Leader]
@@ -132,7 +132,7 @@ CopyObjectStruct::
 	and a
 	ret nz ; masked
 
-	ld hl, wObjectStructs + OBJECT_STRUCT_LENGTH * 1
+	ld hl, wLoadedObjectEvents + OBJECT_STRUCT_LENGTH * 1
 	ld a, 1
 	ld de, OBJECT_STRUCT_LENGTH
 .loop
@@ -586,7 +586,7 @@ SurfStartStep:
 	ret
 
 .GetMovementData:
-	ld a, [wPlayerDirection]
+	ld a, [wLoadedObjectEventPlayerDirection]
 	srl a
 	srl a
 	maskbits NUM_DIRECTIONS

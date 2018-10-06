@@ -93,7 +93,7 @@ _GetVarAction::
 
 .PlayerFacing:
 ; The direction the player is facing.
-	ld a, [wPlayerDirection]
+	ld a, [wLoadedObjectEventPlayerDirection]
 	and $c
 	rrca
 	rrca

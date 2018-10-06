@@ -8,7 +8,7 @@ _CardKey:
 	cp MAP_RADIO_TOWER_3F
 	jr nz, .nope
 ; Are we facing the slot?
-	ld a, [wPlayerDirection]
+	ld a, [wLoadedObjectEventPlayerDirection]
 	and %1100
 	cp OW_UP
 	jr nz, .nope

@@ -248,10 +248,10 @@ GetDestinationWarpNumber::
 	ret
 
 .GetDestinationWarpNumber:
-	ld a, [wPlayerStandingMapY]
+	ld a, [wLoadedObjectEventPlayerStandingMapY]
 	sub 4
 	ld e, a
-	ld a, [wPlayerStandingMapX]
+	ld a, [wLoadedObjectEventPlayerStandingMapX]
 	sub 4
 	ld d, a
 	ld a, [wCurMapWarpCount]
@@ -639,13 +639,13 @@ CopyMapObjectEvents::
 	ret
 
 ClearObjectStructs::
-	ld hl, wObject1Struct
+	ld hl, wLoadedObjectEvent1
 	ld bc, OBJECT_STRUCT_LENGTH * (NUM_OBJECT_STRUCTS - 1)
 	xor a
 	call ByteFill
 
 ; Just to make sure (this is rather pointless)
-	ld hl, wObject1Struct
+	ld hl, wLoadedObjectEvent1
 	ld de, OBJECT_STRUCT_LENGTH
 	ld c, NUM_OBJECT_STRUCTS - 1
 	xor a
@@ -1498,16 +1498,16 @@ GetMovementPermissions::
 	call .LeftRight
 	call .UpDown
 ; get coords of current tile
-	ld a, [wPlayerStandingMapX]
+	ld a, [wLoadedObjectEventPlayerStandingMapX]
 	ld d, a
-	ld a, [wPlayerStandingMapY]
+	ld a, [wLoadedObjectEventPlayerStandingMapY]
 	ld e, a
 	call GetCoordTile
-	ld [wPlayerStandingTile], a
+	ld [wLoadedObjectEventPlayerStandingTile], a
 	call .CheckHiNybble
 	ret nz
 
-	ld a, [wPlayerStandingTile]
+	ld a, [wLoadedObjectEventPlayerStandingTile]
 	and 7
 	ld hl, .MovementPermissionsData
 	add l
@@ -1532,9 +1532,9 @@ GetMovementPermissions::
 	db UP_MASK | LEFT_MASK
 
 .UpDown:
-	ld a, [wPlayerStandingMapX]
+	ld a, [wLoadedObjectEventPlayerStandingMapX]
 	ld d, a
-	ld a, [wPlayerStandingMapY]
+	ld a, [wLoadedObjectEventPlayerStandingMapY]
 	ld e, a
 
 	push de
@@ -1551,9 +1551,9 @@ GetMovementPermissions::
 	ret
 
 .LeftRight:
-	ld a, [wPlayerStandingMapX]
+	ld a, [wLoadedObjectEventPlayerStandingMapX]
 	ld d, a
-	ld a, [wPlayerStandingMapY]
+	ld a, [wLoadedObjectEventPlayerStandingMapY]
 	ld e, a
 
 	push de
@@ -1652,7 +1652,7 @@ GetFacingTileCoord::
 ; Return map coordinates in (d, e) and tile id in a
 ; of the tile the player is facing.
 
-	ld a, [wPlayerDirection]
+	ld a, [wLoadedObjectEventPlayerDirection]
 	and %1100
 	srl a
 	srl a
@@ -1672,10 +1672,10 @@ GetFacingTileCoord::
 	ld h, [hl]
 	ld l, a
 
-	ld a, [wPlayerStandingMapX]
+	ld a, [wLoadedObjectEventPlayerStandingMapX]
 	add d
 	ld d, a
-	ld a, [wPlayerStandingMapY]
+	ld a, [wLoadedObjectEventPlayerStandingMapY]
 	add e
 	ld e, a
 	ld a, [hl]
@@ -1845,10 +1845,10 @@ CheckCurrentMapCoordEvents::
 	call CheckScenes
 	ld b, a
 ; Load your current coordinates into de.  This will be used to check if your position is in the coord event table for the current map.
-	ld a, [wPlayerStandingMapX]
+	ld a, [wLoadedObjectEventPlayerStandingMapX]
 	sub 4
 	ld d, a
-	ld a, [wPlayerStandingMapY]
+	ld a, [wLoadedObjectEventPlayerStandingMapY]
 	sub 4
 	ld e, a
 

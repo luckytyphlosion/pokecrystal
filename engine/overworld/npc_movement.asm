@@ -221,14 +221,14 @@ CheckFacingObject::
 	call CheckCounterTile
 	jr nz, .asm_6ff1
 
-	ld a, [wPlayerStandingMapX]
+	ld a, [wLoadedObjectEventPlayerStandingMapX]
 	sub d
 	cpl
 	inc a
 	add d
 	ld d, a
 
-	ld a, [wPlayerStandingMapY]
+	ld a, [wLoadedObjectEventPlayerStandingMapY]
 	sub e
 	cpl
 	inc a
@@ -236,7 +236,7 @@ CheckFacingObject::
 	ld e, a
 
 .asm_6ff1
-	ld bc, wObjectStructs ; redundant
+	ld bc, wLoadedObjectEvents ; redundant
 	ld a, 0
 	ldh [hMapObjectIndexBuffer], a
 	call IsNPCAtCoord
@@ -299,7 +299,7 @@ Unreferenced_Function7015:
 	ret
 
 IsNPCAtCoord:
-	ld bc, wObjectStructs
+	ld bc, wLoadedObjectEvents
 	xor a
 .loop
 	ldh [hObjectStructIndexBuffer], a
@@ -462,11 +462,11 @@ IsObjectMovingOffEdgeOfScreen:
 	ret
 
 Unreferenced_Function7113:
-	ld a, [wPlayerStandingMapX]
+	ld a, [wLoadedObjectEventPlayerStandingMapX]
 	ld d, a
-	ld a, [wPlayerStandingMapY]
+	ld a, [wLoadedObjectEventPlayerStandingMapY]
 	ld e, a
-	ld bc, wObjectStructs
+	ld bc, wLoadedObjectEvents
 	xor a
 .loop
 	ldh [hObjectStructIndexBuffer], a

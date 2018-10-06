@@ -164,7 +164,7 @@ asm_4448:
 	jr _HandleObjectAction
 
 _HandleObjectAction:
-; call [4 * wObjectStructs[ObjInd, OBJECT_ACTION] + de]
+; call [4 * wLoadedObjectEvents[ObjInd, OBJECT_ACTION] + de]
 	ld hl, OBJECT_ACTION
 	add hl, bc
 	ld a, [hl]
@@ -2066,7 +2066,7 @@ DespawnEmote:
 	ret
 
 .DeleteEmote:
-	ld de, wObjectStructs
+	ld de, wLoadedObjectEvents
 	ld a, NUM_OBJECT_STRUCTS
 .loop
 	push af
@@ -2140,7 +2140,7 @@ Function55e0::
 	ld a, [wVramState]
 	bit 0, a
 	ret z
-	ld bc, wObjectStructs
+	ld bc, wLoadedObjectEvents
 	xor a
 .loop
 	ldh [hMapObjectIndexBuffer], a
@@ -2200,7 +2200,7 @@ Function5629:
 
 Function5645:
 	xor a
-	ld bc, wObjectStructs
+	ld bc, wLoadedObjectEvents
 .loop
 	ldh [hMapObjectIndexBuffer], a
 	call SetFacing_Standing
@@ -2412,7 +2412,7 @@ HandleNPCStep::
 	ret
 
 .DoStepsForAllObjects:
-	ld bc, wObjectStructs
+	ld bc, wLoadedObjectEvents
 	xor a
 .loop
 	ldh [hMapObjectIndexBuffer], a
@@ -2436,7 +2436,7 @@ RefreshPlayerSprite:
 	ld [wPlayerMovement], a
 	xor a
 	ld [wPlayerTurningDirection], a
-	ld [wPlayerObjectStepFrame], a
+	ld [wLoadedObjectEventPlayerObjectStepFrame], a
 	call .TryResetPlayerAction
 	farcall CheckWarpFacingDown
 	call c, SpawnInFacingDown
@@ -2451,7 +2451,7 @@ RefreshPlayerSprite:
 
 .ok
 	ld a, OBJECT_ACTION_00
-	ld [wPlayerAction], a
+	ld [wLoadedObjectEventPlayerAction], a
 	ret
 
 .SpawnInCustomFacing:
@@ -2467,7 +2467,7 @@ RefreshPlayerSprite:
 SpawnInFacingDown:
 	ld a, 0
 ContinueSpawnFacing:
-	ld bc, wPlayerStruct
+	ld bc, wLoadedObjectEventPlayer
 	call SetSpriteDirection
 	ret
 
@@ -2485,7 +2485,7 @@ _SetPlayerPalette:
 	swap a
 	and PALETTE_MASK
 	ld d, a
-	ld bc, wPlayerStruct
+	ld bc, wLoadedObjectEventPlayer
 	ld hl, OBJECT_PALETTE
 	add hl, bc
 	ld a, [hl]
@@ -2571,7 +2571,7 @@ Function586e:
 	ret
 
 Function587a:
-	ld bc, wObjectStructs
+	ld bc, wLoadedObjectEvents
 	xor a
 .loop
 	push af
@@ -2614,7 +2614,7 @@ _SetFlagsForMovement_2::
 
 Function58b9::
 	push bc
-	ld bc, wObjectStructs
+	ld bc, wLoadedObjectEvents
 	xor a
 .loop
 	push af
@@ -2732,7 +2732,7 @@ ApplyBGMapAnchorToObjects:
 	ld d, a
 	ld a, [wPlayerBGMapOffsetY]
 	ld e, a
-	ld bc, wObjectStructs
+	ld bc, wLoadedObjectEvents
 	ld a, NUM_OBJECT_STRUCTS
 .loop
 	push af
@@ -2784,7 +2784,7 @@ InitSprites:
 	ld bc, NUM_OBJECT_STRUCTS
 	call ByteFill
 	ld d, 0
-	ld bc, wObjectStructs
+	ld bc, wLoadedObjectEvents
 	ld hl, wMovementPointer
 .loop
 	push hl
@@ -2988,16 +2988,16 @@ InitSprites:
 	ret
 
 .Addresses:
-	dw wPlayerStruct
-	dw wObject1Struct
-	dw wObject2Struct
-	dw wObject3Struct
-	dw wObject4Struct
-	dw wObject5Struct
-	dw wObject6Struct
-	dw wObject7Struct
-	dw wObject8Struct
-	dw wObject9Struct
-	dw wObject10Struct
-	dw wObject11Struct
-	dw wObject12Struct
+	dw wLoadedObjectEventPlayer
+	dw wLoadedObjectEvent1
+	dw wLoadedObjectEvent2
+	dw wLoadedObjectEvent3
+	dw wLoadedObjectEvent4
+	dw wLoadedObjectEvent5
+	dw wLoadedObjectEvent6
+	dw wLoadedObjectEvent7
+	dw wLoadedObjectEvent8
+	dw wLoadedObjectEvent9
+	dw wLoadedObjectEvent10
+	dw wLoadedObjectEvent11
+	dw wLoadedObjectEvent12
